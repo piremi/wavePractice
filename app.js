@@ -1,11 +1,11 @@
-import { Wave } from "./wave.js";
+import { WaveGroup } from "./waveGroup.js";
 class App {
   constructor() {
     this.canvas = document.createElement("canvas");
     this.ctx = this.canvas.getContext("2d");
     document.body.appendChild(this.canvas);
 
-    this.wave = new Wave();
+    this.waveGroup = new WaveGroup();
 
     window.addEventListener("resize", this.resize.bind(this), false);
     this.resize();
@@ -21,14 +21,14 @@ class App {
     this.canvas.height = this.stageHeight * 2;
     this.ctx.scale(2, 2); //doubled the scale in order to be shown in retina display
 
-    this.wave.resize(this.stageWidth, this.stageHeight);
+    this.waveGroup.resize(this.stageWidth, this.stageHeight);
     //this.waveGroup.resize(this.stageWidth, this.stageHeight);
   }
 
   animate(t) {
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight); //clear canvas
 
-    this.wave.draw(this.ctx);
+    this.waveGroup.draw(this.ctx);
 
     requestAnimationFrame(this.animate.bind(this));
   }
