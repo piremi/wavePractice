@@ -54,5 +54,11 @@ export class Wave {
       prevX = this.points[i].x;
       prevY = this.points[i].y;
     }
+
+    ctx.lineTo(prevX, prevY);
+    ctx.lineTo(this.stageWidth, this.stageWidth);
+    ctx.lineTo(this.points[0].x, this.stageHeight);
+    ctx.fill();
+    ctx.closePath();
   }
 }
